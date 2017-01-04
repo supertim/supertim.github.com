@@ -36,6 +36,8 @@ Quick">
   <!--[if lt IE 9]><script src="//cdn.bootcss.com/html5shiv/3.7.0/html5shiv.min.js"></script><![endif]-->
   
   
+<!-- //插入统计代码 -->
+
 </head>
 <body>
   <div class="wrapper">
@@ -95,11 +97,43 @@ Quick">
       
       
       
+  <div class="share">
+    
+      <script type="text/javascript">
+      (function(){
+      var p = {
+      url:location.href, /*获取URL，可加上来自分享到QQ标识，方便统计*/
+      desc:'Hello World - SuperTim&#39;s Page', /*分享理由(风格应模拟用户对话),支持多分享语随机展现（使用|分隔）*/
+      title:'', /*分享标题(可选)*/
+      summary:'', /*分享摘要(可选)*/
+      pics:'', /*分享图片(可选)*/
+      flash: '', /*视频地址(可选)*/
+      site:'SuperTim&#39;s Page', /*分享来源(可选) 如：QQ分享*/
+      style:'101',
+      width:96,
+      height:24
+      };
+      var s = [];
+      for(var i in p){
+      s.push(i + '=' + encodeURIComponent(p[i]||''));
+      }
+      document.write(['<a class="qcShareQQDiv" href="http://connect.qq.com/widget/shareqq/index.html?',s.join('&'),'" target="_blank">分享到QQ</a>'].join(''));
+      })();
+      </script>
+    
+  </div>
+  <script src="http://connect.qq.com/widget/loader/loader.js" widget="shareqq" charset="utf-8"></script>
+
     
     <div class="clearfix"></div>
   </footer>
 </article>
 
+
+<section id="comment">
+  <h1 class="title">Comments</h1>
+  <div class="ds-thread" data-thread-key="2017/01/04/hello-world/" data-title="Hello World" data-url="http://yoursite.com/2017/01/04/hello-world/"></div>
+</section>
 </div>
   </div>
   
@@ -139,8 +173,22 @@ Quick">
 <script src="/js/gallery.js"></script>
 
 
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"supertimcheng"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script>
+
 
 <div id="rightfix" style="display:none;">
+
+<a href="#comment" id="gocomm" class="fix_btn" title="提问/评论"><i><i></i></i></a>
 
 
 <a href="javascript:void(0)" id="gotop" class="fix_btn" onclick="gotop();" title="回到顶部"><i></i></a>
@@ -173,6 +221,7 @@ Quick">
     $('.fancybox').fancybox();
   })(jQuery);
 </script>
+
 
 </body>
 </html>
