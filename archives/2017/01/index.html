@@ -23,12 +23,10 @@
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
   
   <link rel="stylesheet" href="/css/style.css">
-  <!--[if lt IE 9]><script src="//cdn.bootcss.com/html5shiv/3.7.0/html5shiv.min.js"></script><![endif]-->
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
   
-  
-<!-- //插入统计代码 -->
-
 </head>
+
 <body>
   <div class="wrapper">
     <header id="header">
@@ -89,7 +87,6 @@
 
 </div>
   </div>
-  
   <footer id="footer"><div class="copyright">
   
   &copy; 2017 <a href="/">SuperTim</a>
@@ -98,52 +95,15 @@
 <div class="theme-copyright">
   Theme by <a href="https://github.com/orderedlist" target="_blank">orderedlist</a>
    | 
-  Redesign by <a href="http://blog.dafengning.com/" target="_blank">Chong Zi</a>
+  Redesign by <a href="http://heroicyang.com/" target="_blank">Heroic Yang</a>
 </div>
 <div class="clearfix"></div></footer>
-  <script src="//lib.sinaapp.com/js/jquery/1.8/jquery.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
 <script src="/js/scale.fix.js"></script>
 <script src="/js/jquery.imagesloaded.min.js"></script>
 <script src="/js/gallery.js"></script>
 
 
-<script type="text/javascript">
-var duoshuoQuery = {short_name:"supertim"};
-  (function() {
-    var ds = document.createElement('script');
-    ds.type = 'text/javascript';ds.async = true;
-    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-    ds.charset = 'UTF-8';
-    (document.getElementsByTagName('head')[0] 
-     || document.getElementsByTagName('body')[0]).appendChild(ds);
-  })();
-</script>
-
-
-<div id="rightfix" style="display:none;">
-
-
-<a href="javascript:void(0)" id="gotop" class="fix_btn" onclick="gotop();" title="回到顶部"><i></i></a>
-<script>
-  function gotop(){
-    $('html,body').animate({
-        scrollTop : '0px'
-      }, 800);
-  }
-  $(function(){
-    _rightfix = $('#rightfix');
-    $(window).scroll(function(){
-      $sollTop = document.documentElement.scrollTop + document.body.scrollTop;
-      if($sollTop > 350){
-        _rightfix.show();
-      }else{
-        _rightfix.hide();
-      }
-    });
-  });
-</script>
-
-</div>
 
 
 <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
