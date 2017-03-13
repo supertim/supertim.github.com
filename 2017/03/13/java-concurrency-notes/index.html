@@ -30,7 +30,7 @@
 
 同步：方法结束才能返回
 异步：一个消息传递，立刻返回，在另一个线程真实执行">
-<meta property="og:updated_time" content="2017-03-13T12:11:19.000Z">
+<meta property="og:updated_time" content="2017-03-13T12:12:02.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="java-concurrency-notes">
 <meta name="twitter:description" content="1 概念
@@ -142,11 +142,11 @@
 <li>编译器优化 </li>
 </ul>
 </li>
-<li><p>有序性：一个线程看起来是有序的，但是对于另一个线程未必是有序的</p>
-  <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> a = <span class="number">0</span>;</div><div class="line"><span class="keyword">boolean</span> flag = <span class="keyword">false</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">writer</span><span class="params">()</span> </span>&#123;</div><div class="line">	a = <span class="number">1</span>;</div><div class="line">	flag = <span class="keyword">true</span>;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">reader</span><span class="params">()</span> </span>&#123;</div><div class="line">	<span class="keyword">if</span> (flag) &#123;</div><div class="line">		<span class="comment">// i 未必是 2</span></div><div class="line">	   <span class="keyword">int</span> i = a + <span class="number">1</span>;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-<li><p>happen-before原则：指令重排的原则</p>
+<li>有序性：一个线程看起来是有序的，但是对于另一个线程未必是有序的</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> a = <span class="number">0</span>;</div><div class="line"><span class="keyword">boolean</span> flag = <span class="keyword">false</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">writer</span><span class="params">()</span> </span>&#123;</div><div class="line">	a = <span class="number">1</span>;</div><div class="line">	flag = <span class="keyword">true</span>;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">reader</span><span class="params">()</span> </span>&#123;</div><div class="line">	<span class="keyword">if</span> (flag) &#123;</div><div class="line">		<span class="comment">// i 未必是 2</span></div><div class="line">	   <span class="keyword">int</span> i = a + <span class="number">1</span>;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <ul>
+<li>happen-before原则：指令重排的原则<ul>
 <li>一个线程内保证串行性</li>
 <li>volatie：变量的写，先发生于读，可见性</li>
 <li>unlock必然发生于随后的lock前</li>
@@ -176,7 +176,7 @@
 
 
 <section id="comment">
-  <h1 class="title">Comments</h1>
+  <h1 class="title">评论</h1>
   <div class="ds-thread" data-thread-key="2017/03/13/java-concurrency-notes/" data-title="java-concurrency-notes" data-url="http://yoursite.com/2017/03/13/java-concurrency-notes/"></div>
 </section>
 </div>
