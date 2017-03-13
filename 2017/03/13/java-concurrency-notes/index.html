@@ -4,21 +4,100 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="chrome=1">
   
-  <title>SuperTim&#39;s Page</title>
+  <title>java-concurrency-notes | SuperTim&#39;s Page</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   
     <meta name="author" content="SuperTim">
   
   
-  <meta name="description" content="自信人生二百年，会当水击三千里">
-<meta property="og:type" content="website">
-<meta property="og:title" content="SuperTim's Page">
-<meta property="og:url" content="http://yoursite.com/index.html">
+    <meta name="description" content="1 概念
+同步和异步
+同步：方法结束才能返回
+异步：一个消息传递，立刻返回，在另一个线程真实执行
+
+
+并发和并行
+并发：同时执行
+并行：交替执行
+
+
+临界区
+阻塞和非阻塞
+阻塞：占用资源的线程不释放资源，其他临界区上得线程不能工作
+非阻塞：没有一个线程可以妨碍其他线程执行
+
+
+死锁,饥饿,活锁
+饥饿：线程无法得到资源，优先级低得线程始终得不到高优先级线程释放的资源
+活锁：资源不停的在两个线程间跳动">
+  
+  <meta name="description" content="1 概念
+同步和异步
+同步：方法结束才能返回
+异步：一个消息传递，立刻返回，在另一个线程真实执行
+
+
+并发和并行
+并发：同时执行
+并行：交替执行
+
+
+临界区
+阻塞和非阻塞
+阻塞：占用资源的线程不释放资源，其他临界区上得线程不能工作
+非阻塞：没有一个线程可以妨碍其他线程执行
+
+
+死锁,饥饿,活锁
+饥饿：线程无法得到资源，优先级低得线程始终得不到高优先级线程释放的资源
+活锁：资源不停的在两个线程间跳动">
+<meta property="og:type" content="article">
+<meta property="og:title" content="java-concurrency-notes">
+<meta property="og:url" content="http://yoursite.com/2017/03/13/java-concurrency-notes/index.html">
 <meta property="og:site_name" content="SuperTim's Page">
-<meta property="og:description" content="自信人生二百年，会当水击三千里">
+<meta property="og:description" content="1 概念
+同步和异步
+同步：方法结束才能返回
+异步：一个消息传递，立刻返回，在另一个线程真实执行
+
+
+并发和并行
+并发：同时执行
+并行：交替执行
+
+
+临界区
+阻塞和非阻塞
+阻塞：占用资源的线程不释放资源，其他临界区上得线程不能工作
+非阻塞：没有一个线程可以妨碍其他线程执行
+
+
+死锁,饥饿,活锁
+饥饿：线程无法得到资源，优先级低得线程始终得不到高优先级线程释放的资源
+活锁：资源不停的在两个线程间跳动">
+<meta property="og:updated_time" content="2017-03-13T12:05:18.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="SuperTim's Page">
-<meta name="twitter:description" content="自信人生二百年，会当水击三千里">
+<meta name="twitter:title" content="java-concurrency-notes">
+<meta name="twitter:description" content="1 概念
+同步和异步
+同步：方法结束才能返回
+异步：一个消息传递，立刻返回，在另一个线程真实执行
+
+
+并发和并行
+并发：同时执行
+并行：交替执行
+
+
+临界区
+阻塞和非阻塞
+阻塞：占用资源的线程不释放资源，其他临界区上得线程不能工作
+非阻塞：没有一个线程可以妨碍其他线程执行
+
+
+死锁,饥饿,活锁
+饥饿：线程无法得到资源，优先级低得线程始终得不到高优先级线程释放的资源
+活锁：资源不停的在两个线程间跳动">
   
     <link rel="alternate" href="/atom.xml" title="SuperTim&#39;s Page" type="application/atom+xml">
   
@@ -56,13 +135,7 @@
   </nav>
   <div class="clearfix"></div>
 </header>
-    <div class="content">
-
-
-
-
-  
-    <article class="post">
+    <div class="content"><article class="post">
   <header>
     
       <div class="icon"></div>
@@ -74,7 +147,7 @@
     
     
   
-    <h1 class="title"><a href="/2017/03/13/java-concurrency-notes/">java-concurrency-notes</a></h1>
+    <h1 class="title">java-concurrency-notes</h1>
   
 
   </header>
@@ -146,54 +219,9 @@
 
     
   </div>
-  <footer class="end-sep">
+  <footer>
     
       
-      
-    
-    <div class="clearfix"></div>
-  </footer>
-</article>
-
-
-  
-    <article class="post">
-  <header>
-    
-      <div class="icon"></div>
-      <a href="/2017/03/10/kafka_notes/">
-  <time datetime="2017-03-10T14:09:51.000Z">
-    2017-03-10
-  </time>
-</a>
-    
-    
-  
-    <h1 class="title"><a href="/2017/03/10/kafka_notes/">kafka-notes</a></h1>
-  
-
-  </header>
-  
-  <div class="entry">
-    
-      <h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><hr>
-<ul>
-<li><p>大量log数据产生<br>  包括</p>
-<ul>
-<li>用户行为数据：登陆，浏览，点击，赞，分享，评论，搜索 ……</li>
-<li>机器行为数据：callstack， calllatency， error， cpu，memory，disk，….</li>
-</ul>
-<p>可以用来</p>
-<ul>
-<li>搜索相关性，推荐，定向，安全分析
-    
-  </div>
-  <footer class="end-sep">
-    
-      
-        <div class="alignleft">
-          <a href="/2017/03/10/kafka_notes/#more" class="more-link">Read More</a>
-        </div>
       
       
     
@@ -202,14 +230,10 @@
 </article>
 
 
-  
-
-  <nav id="pagination">
-  
-  
-  <div class="clearfix"></div>
-</nav>
-
+<section id="comment">
+  <h1 class="title">Comments</h1>
+  <div class="ds-thread" data-thread-key="2017/03/13/java-concurrency-notes/" data-title="java-concurrency-notes" data-url="http://yoursite.com/2017/03/13/java-concurrency-notes/"></div>
+</section>
 </div>
   </div>
   
@@ -274,6 +298,8 @@ var duoshuoQuery = {short_name:"supertimcheng"};
 
 
 <div id="rightfix" style="display:none;">
+
+<a href="#comment" id="gocomm" class="fix_btn" title="提问/评论"><i><i></i></i></a>
 
 
 <a href="javascript:void(0)" id="gotop" class="fix_btn" onclick="gotop();" title="回到顶部"><i></i></a>
