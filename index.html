@@ -81,74 +81,19 @@
   
   <div class="entry">
     
-      <a id="more"></a>
-<h1 id="1-概念"><a href="#1-概念" class="headerlink" title="1 概念"></a>1 概念</h1><ul>
-<li>同步和异步<ul>
-<li>同步：方法结束才能返回</li>
-<li>异步：一个消息传递，立刻返回，在另一个线程真实执行</li>
-</ul>
-</li>
-<li>并发和并行<ul>
-<li>并发：同时执行</li>
-<li>并行：交替执行</li>
-</ul>
-</li>
-<li>临界区</li>
-<li>阻塞和非阻塞<ul>
-<li>阻塞：占用资源的线程不释放资源，其他临界区上得线程不能工作</li>
-<li>非阻塞：没有一个线程可以妨碍其他线程执行</li>
-</ul>
-</li>
-<li>死锁,饥饿,活锁<ul>
-<li>饥饿：线程无法得到资源，优先级低得线程始终得不到高优先级线程释放的资源</li>
-<li>活锁：资源不停的在两个线程间跳动<h2 id="并发级别"><a href="#并发级别" class="headerlink" title="并发级别"></a>并发级别</h2></li>
-</ul>
-</li>
-<li>阻塞：synchronized或者重入的</li>
-<li>无饥饿：公平锁</li>
-<li>无障碍obstruction-free：最弱的非阻塞调度，使用标记位记录是否修改，如果修改，则回退，这是一种乐观的控制，认为大多数情况下不会冲突</li>
-<li><p>无锁lock-free：必须有个线程有限步离开临界区</p>
-  <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">while</span>（！atomicVar.compareAndSet(localVar, localVar + <span class="number">1</span>)） &#123;</div><div class="line">	localVal = atomicVar.get();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-<li><p>无等待wait-free： 所有的线程都是有限步离开临界区，eg. ReadCopyUpdate</p>
-</li>
-</ul>
-<h2 id="两个定律"><a href="#两个定律" class="headerlink" title="两个定律"></a>两个定律</h2><ul>
-<li>amdahl定律</li>
-<li>gustafson定律</li>
-</ul>
-<h2 id="java内存模型JMM"><a href="#java内存模型JMM" class="headerlink" title="java内存模型JMM"></a>java内存模型JMM</h2><ul>
-<li>原子性：int是，long在32位系统的读写不是原子性的</li>
-<li>可见性：线程1改掉共享变量，线程2未必能立刻知晓，原因可能是：<ul>
-<li>缓存优化，硬件优化</li>
-<li>指令重排：防止流水线被打断</li>
-<li>编译器优化 </li>
-</ul>
-</li>
-<li><p>有序性：一个线程看起来是有序的，但是对于另一个线程未必是有序的</p>
-  <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> a = <span class="number">0</span>;</div><div class="line"><span class="keyword">boolean</span> flag = <span class="keyword">false</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">writer</span><span class="params">()</span> </span>&#123;</div><div class="line">	a = <span class="number">1</span>;</div><div class="line">	flag = <span class="keyword">true</span>;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">reader</span><span class="params">()</span> </span>&#123;</div><div class="line">	<span class="keyword">if</span> (flag) &#123;</div><div class="line">		<span class="comment">// i 未必是 2</span></div><div class="line">	   <span class="keyword">int</span> i = a + <span class="number">1</span>;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-<li><p>happen-before原则：指令重排的原则</p>
+      <h1 id="1-概念"><a href="#1-概念" class="headerlink" title="1 概念"></a>1 概念</h1><ul>
+<li><p>同步和异步</p>
 <ul>
-<li>一个线程内保证串行性</li>
-<li>volatie：变量的写，先发生于读，可见性</li>
-<li>unlock必然发生于随后的lock前</li>
-<li>A 先于 B， B先于C， 则A必然先于C</li>
-<li>线程的start方法由于他的每一个动作</li>
-<li>线程的所有操作先于join</li>
-<li>interrupt先于被中断线程的代码</li>
-<li>构造函数执行结束先于finalize()方法</li>
-</ul>
-</li>
-</ul>
-<h1 id="并行基础知识"><a href="#并行基础知识" class="headerlink" title="并行基础知识"></a>并行基础知识</h1><ul>
-<li>线程的生命周期</li>
-</ul>
-
+<li>同步：方法结束才能返回</li>
+<li>异步：一个消息传递，立刻返回，在另一个线程真实执行
     
   </div>
   <footer class="end-sep">
     
+      
+        <div class="alignleft">
+          <a href="/2017/03/13/java-concurrency-notes/#more" class="more-link">Read More</a>
+        </div>
       
       
     

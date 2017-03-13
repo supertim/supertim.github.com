@@ -12,92 +12,32 @@
   
     <meta name="description" content="1 概念
 同步和异步
+
 同步：方法结束才能返回
-异步：一个消息传递，立刻返回，在另一个线程真实执行
-
-
-并发和并行
-并发：同时执行
-并行：交替执行
-
-
-临界区
-阻塞和非阻塞
-阻塞：占用资源的线程不释放资源，其他临界区上得线程不能工作
-非阻塞：没有一个线程可以妨碍其他线程执行
-
-
-死锁,饥饿,活锁
-饥饿：线程无法得到资源，优先级低得线程始终得不到高优先级线程释放的资源
-活锁：资源不停的在两个线程间跳">
+异步：一个消息传递，立刻返回，在另一个线程真实执行">
   
   <meta name="description" content="1 概念
 同步和异步
+
 同步：方法结束才能返回
-异步：一个消息传递，立刻返回，在另一个线程真实执行
-
-
-并发和并行
-并发：同时执行
-并行：交替执行
-
-
-临界区
-阻塞和非阻塞
-阻塞：占用资源的线程不释放资源，其他临界区上得线程不能工作
-非阻塞：没有一个线程可以妨碍其他线程执行
-
-
-死锁,饥饿,活锁
-饥饿：线程无法得到资源，优先级低得线程始终得不到高优先级线程释放的资源
-活锁：资源不停的在两个线程间跳">
+异步：一个消息传递，立刻返回，在另一个线程真实执行">
 <meta property="og:type" content="article">
 <meta property="og:title" content="java-concurrency-notes">
 <meta property="og:url" content="http://yoursite.com/2017/03/13/java-concurrency-notes/index.html">
 <meta property="og:site_name" content="SuperTim's Page">
 <meta property="og:description" content="1 概念
 同步和异步
+
 同步：方法结束才能返回
-异步：一个消息传递，立刻返回，在另一个线程真实执行
-
-
-并发和并行
-并发：同时执行
-并行：交替执行
-
-
-临界区
-阻塞和非阻塞
-阻塞：占用资源的线程不释放资源，其他临界区上得线程不能工作
-非阻塞：没有一个线程可以妨碍其他线程执行
-
-
-死锁,饥饿,活锁
-饥饿：线程无法得到资源，优先级低得线程始终得不到高优先级线程释放的资源
-活锁：资源不停的在两个线程间跳">
-<meta property="og:updated_time" content="2017-03-13T12:07:20.000Z">
+异步：一个消息传递，立刻返回，在另一个线程真实执行">
+<meta property="og:updated_time" content="2017-03-13T12:11:19.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="java-concurrency-notes">
 <meta name="twitter:description" content="1 概念
 同步和异步
+
 同步：方法结束才能返回
-异步：一个消息传递，立刻返回，在另一个线程真实执行
-
-
-并发和并行
-并发：同时执行
-并行：交替执行
-
-
-临界区
-阻塞和非阻塞
-阻塞：占用资源的线程不释放资源，其他临界区上得线程不能工作
-非阻塞：没有一个线程可以妨碍其他线程执行
-
-
-死锁,饥饿,活锁
-饥饿：线程无法得到资源，优先级低得线程始终得不到高优先级线程释放的资源
-活锁：资源不停的在两个线程间跳">
+异步：一个消息传递，立刻返回，在另一个线程真实执行">
   
     <link rel="alternate" href="/atom.xml" title="SuperTim&#39;s Page" type="application/atom+xml">
   
@@ -154,14 +94,16 @@
   
   <div class="entry">
     
-      <a id="more"></a>
-<h1 id="1-概念"><a href="#1-概念" class="headerlink" title="1 概念"></a>1 概念</h1><ul>
-<li>同步和异步<ul>
+      <h1 id="1-概念"><a href="#1-概念" class="headerlink" title="1 概念"></a>1 概念</h1><ul>
+<li><p>同步和异步</p>
+<ul>
 <li>同步：方法结束才能返回</li>
-<li>异步：一个消息传递，立刻返回，在另一个线程真实执行</li>
+<li>异步：一个消息传递，立刻返回，在另一个线程真实执行<a id="more"></a>
+</li>
 </ul>
 </li>
-<li>并发和并行<ul>
+<li><p>并发和并行</p>
+<ul>
 <li>并发：同时执行</li>
 <li>并行：交替执行</li>
 </ul>
@@ -174,17 +116,19 @@
 </li>
 <li>死锁,饥饿,活锁<ul>
 <li>饥饿：线程无法得到资源，优先级低得线程始终得不到高优先级线程释放的资源</li>
-<li>活锁：资源不停的在两个线程间跳动<h2 id="并发级别"><a href="#并发级别" class="headerlink" title="并发级别"></a>并发级别</h2></li>
+<li>活锁：资源不停的在两个线程间跳动</li>
 </ul>
 </li>
+</ul>
+<h2 id="并发级别"><a href="#并发级别" class="headerlink" title="并发级别"></a>并发级别</h2><ul>
 <li>阻塞：synchronized或者重入的</li>
 <li>无饥饿：公平锁</li>
 <li>无障碍obstruction-free：最弱的非阻塞调度，使用标记位记录是否修改，如果修改，则回退，这是一种乐观的控制，认为大多数情况下不会冲突</li>
-<li><p>无锁lock-free：必须有个线程有限步离开临界区</p>
-  <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">while</span>（！atomicVar.compareAndSet(localVar, localVar + <span class="number">1</span>)） &#123;</div><div class="line">	localVal = atomicVar.get();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-<li><p>无等待wait-free： 所有的线程都是有限步离开临界区，eg. ReadCopyUpdate</p>
-</li>
+<li>无锁lock-free：必须有个线程有限步离开临界区</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">while</span>（！atomicVar.compareAndSet(localVar, localVar + <span class="number">1</span>)） &#123;</div><div class="line">	localVal = atomicVar.get();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>无等待wait-free： 所有的线程都是有限步离开临界区，eg. ReadCopyUpdate</li>
 </ul>
 <h2 id="两个定律"><a href="#两个定律" class="headerlink" title="两个定律"></a>两个定律</h2><ul>
 <li>amdahl定律</li>
