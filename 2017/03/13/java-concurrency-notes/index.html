@@ -30,7 +30,7 @@
 
 同步：方法结束才能返回
 异步：一个消息传递，立刻返回，在另一个线程真实执行">
-<meta property="og:updated_time" content="2017-03-18T15:48:56.000Z">
+<meta property="og:updated_time" content="2017-03-18T16:01:29.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="java-concurrency-notes">
 <meta name="twitter:description" content="1 概念
@@ -188,7 +188,28 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;</div><div class="line">	<span class="keyword">static</span> A a = <span class="keyword">new</span> A；</div><div class="line">	<span class="keyword">static</span> <span class="keyword">int</span> i = <span class="number">0</span>;</div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">		synchronzied(a) &#123;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="comment">// 错误的加锁：</span></div><div class="line">	<span class="function"><span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">		++i;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>改成</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">increase</span><span class="params">()</span> </span>&#123;</div><div class="line">	++i</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h1 id="JDK并发包"><a href="#JDK并发包" class="headerlink" title="JDK并发包"></a>JDK并发包</h1><h2 id="同步控制"><a href="#同步控制" class="headerlink" title="同步控制"></a>同步控制</h2><h2 id="线程池"><a href="#线程池" class="headerlink" title="线程池"></a>线程池</h2><h2 id="并发容器"><a href="#并发容器" class="headerlink" title="并发容器"></a>并发容器</h2><h1 id="锁的优化"><a href="#锁的优化" class="headerlink" title="锁的优化"></a>锁的优化</h1>
+<h1 id="JDK并发包"><a href="#JDK并发包" class="headerlink" title="JDK并发包"></a>JDK并发包</h1><h2 id="同步控制"><a href="#同步控制" class="headerlink" title="同步控制"></a>同步控制</h2><ul>
+<li>重入锁ReentrantLock<ul>
+<li>lock/unlock：在一个线程内可以反复进入</li>
+<li>lockInterruptibly中断响应：等锁的时候可以被中断（synchronized不可以）</li>
+<li>tryLock可以等待限时</li>
+<li>设置是否公平锁</li>
+</ul>
+</li>
+</ul>
+<p>实现</p>
+<pre><code>* 原子状态
+* 等待队列
+* 阻塞原语
+</code></pre><ul>
+<li>Condition</li>
+<li>信号量</li>
+<li>ReadWriteLock</li>
+<li>CountDownLatch</li>
+<li>CyclicBarrier：countDownLatch 加BarrierAction</li>
+<li>LockSupport<br>  park/unpark,即使unpark在park之前调用，park也能返回 </li>
+</ul>
+<h2 id="线程池"><a href="#线程池" class="headerlink" title="线程池"></a>线程池</h2><h2 id="并发容器"><a href="#并发容器" class="headerlink" title="并发容器"></a>并发容器</h2><h1 id="锁的优化"><a href="#锁的优化" class="headerlink" title="锁的优化"></a>锁的优化</h1>
     
   </div>
   <footer>
@@ -203,7 +224,7 @@
 
 
 <section id="comment">
-  <h1 class="title">Comments</h1>
+  <h1 class="title">评论</h1>
   <div class="ds-thread" data-thread-key="2017/03/13/java-concurrency-notes/" data-title="java-concurrency-notes" data-url="http://yoursite.com/2017/03/13/java-concurrency-notes/"></div>
 </section>
 </div>
