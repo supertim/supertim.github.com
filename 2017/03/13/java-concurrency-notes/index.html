@@ -30,7 +30,7 @@
 
 同步：方法结束才能返回
 异步：一个消息传递，立刻返回，在另一个线程真实执行">
-<meta property="og:updated_time" content="2017-03-13T12:12:02.000Z">
+<meta property="og:updated_time" content="2017-03-18T15:48:56.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="java-concurrency-notes">
 <meta name="twitter:description" content="1 概念
@@ -158,10 +158,37 @@
 </ul>
 </li>
 </ul>
-<h1 id="并行基础知识"><a href="#并行基础知识" class="headerlink" title="并行基础知识"></a>并行基础知识</h1><ul>
-<li>线程的生命周期</li>
+<h1 id="2-并行基础知识"><a href="#2-并行基础知识" class="headerlink" title="2 并行基础知识"></a>2 并行基础知识</h1><h2 id="线程的生命周期"><a href="#线程的生命周期" class="headerlink" title="线程的生命周期"></a>线程的生命周期</h2><p>new -&gt; runnable -&gt; terminated</p>
+<p>runnable &lt;-&gt; blocked synchronized<br>runnbale &lt;-&gt; waiting wait/notify<br>runnbale &lt;-&gt; timed_wating wait/notiy</p>
+<h2 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h2><ul>
+<li>新建线程</li>
 </ul>
-
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">Thread t1 = <span class="keyword">new</span> Thread(<span class="keyword">new</span> Runnbale &#123;</div><div class="line">	<span class="meta">@override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">	  System.println(<span class="string">"A new thread"</span>);</div><div class="line">	&#125; </div><div class="line">&#125;);</div><div class="line">t1.start();</div></pre></td></tr></table></figure>
+<ul>
+<li>终止线程</li>
+<li>中断线程<br>并不会中断线程，只是向线程发一个通知</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">void</span> Thread.interrupt() 设置中断位</div><div class="line"><span class="keyword">public</span> <span class="keyword">boolean</span> Thrad.isInterrupted() 判断是否中断</div><div class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> Thread.interrupted()  判断是否中断，同时清楚中断标志</div></pre></td></tr></table></figure>
+<ul>
+<li>wait／notify</li>
+<li>suspend／resume</li>
+<li>join／yield</li>
+</ul>
+<h2 id="volatile"><a href="#volatile" class="headerlink" title="volatile"></a>volatile</h2><p>当我们声明共享变量为volatile后，对这个变量的读/写将会很特别。理解volatile特性的一个好方法是：把对volatile变量的单个读/写，看成是使用同一个监视器锁对这些单个读/写操作做了同步。下面我们通过具体的示例来说明，请看下面的示例代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">VolatileFeaturesExample</span> </span>&#123;</div><div class="line">    <span class="keyword">volatile</span> <span class="keyword">long</span> vl = <span class="number">0L</span>;  <span class="comment">//使用volatile声明64位的long型变量</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">set</span><span class="params">(<span class="keyword">long</span> l)</span> </span>&#123;</div><div class="line">        vl = l;   <span class="comment">//单个volatile变量的写</span></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">getAndIncrement</span> <span class="params">()</span> </span>&#123;</div><div class="line">        vl++;    <span class="comment">//复合（多个）volatile变量的读/写</span></div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">long</span> <span class="title">get</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> vl;   <span class="comment">//单个volatile变量的读</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>等价于</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">VolatileFeaturesExample</span> </span>&#123;</div><div class="line">    <span class="keyword">long</span> vl = <span class="number">0L</span>;               <span class="comment">// 64位的long型普通变量</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">set</span><span class="params">(<span class="keyword">long</span> l)</span> </span>&#123;     <span class="comment">//对单个的普通 变量的写用同一个监视器同步</span></div><div class="line">        vl = l;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">getAndIncrement</span> <span class="params">()</span> </span>&#123; <span class="comment">//普通方法调用</span></div><div class="line">        <span class="keyword">long</span> temp = get();           <span class="comment">//调用已同步的读方法</span></div><div class="line">        temp += <span class="number">1L</span>;                  <span class="comment">//普通写操作</span></div><div class="line">        set(temp);                   <span class="comment">//调用已同步的写方法</span></div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">long</span> <span class="title">get</span><span class="params">()</span> </span>&#123; </div><div class="line">    <span class="comment">//对单个的普通变量的读用同一个监视器同步</span></div><div class="line">        <span class="keyword">return</span> vl;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>所以不可以把volatile变量当作AtomicLong来用，GetAndIncrement是未加锁的<br>volatile能保证可见性和有序性</p>
+<h2 id="线程组"><a href="#线程组" class="headerlink" title="线程组"></a>线程组</h2><h2 id="守护线程"><a href="#守护线程" class="headerlink" title="守护线程"></a>守护线程</h2><p>如果用户线程都退出了，守护线程自动退出</p>
+<h2 id="优先级"><a href="#优先级" class="headerlink" title="优先级"></a>优先级</h2><h2 id="线程安全与Synchronized"><a href="#线程安全与Synchronized" class="headerlink" title="线程安全与Synchronized"></a>线程安全与Synchronized</h2><ul>
+<li>指定加锁对象</li>
+<li>直接作用于实例方法，相当于当前对象加锁</li>
+<li>直接作用于静态方法，相当于对当前类加锁</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;</div><div class="line">	<span class="keyword">static</span> A a = <span class="keyword">new</span> A；</div><div class="line">	<span class="keyword">static</span> <span class="keyword">int</span> i = <span class="number">0</span>;</div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">		synchronzied(a) &#123;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="comment">// 错误的加锁：</span></div><div class="line">	<span class="function"><span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">		++i;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>改成</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">increase</span><span class="params">()</span> </span>&#123;</div><div class="line">	++i</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="JDK并发包"><a href="#JDK并发包" class="headerlink" title="JDK并发包"></a>JDK并发包</h1><h2 id="同步控制"><a href="#同步控制" class="headerlink" title="同步控制"></a>同步控制</h2><h2 id="线程池"><a href="#线程池" class="headerlink" title="线程池"></a>线程池</h2><h2 id="并发容器"><a href="#并发容器" class="headerlink" title="并发容器"></a>并发容器</h2><h1 id="锁的优化"><a href="#锁的优化" class="headerlink" title="锁的优化"></a>锁的优化</h1>
     
   </div>
   <footer>
@@ -176,7 +203,7 @@
 
 
 <section id="comment">
-  <h1 class="title">评论</h1>
+  <h1 class="title">Comments</h1>
   <div class="ds-thread" data-thread-key="2017/03/13/java-concurrency-notes/" data-title="java-concurrency-notes" data-url="http://yoursite.com/2017/03/13/java-concurrency-notes/"></div>
 </section>
 </div>
