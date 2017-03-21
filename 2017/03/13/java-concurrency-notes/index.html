@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="chrome=1">
   
-  <title>java并发编程笔记一(概念和基础知识) | SuperTim&#39;s Page</title>
+  <title>java并发编程笔记 | SuperTim&#39;s Page</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   
     <meta name="author" content="SuperTim">
@@ -25,9 +25,7 @@
 阻塞：占用资源的线程不释放资源，其他临界区上得线程不能工作
 非阻塞：没有一个线程可以妨碍其他线程执行死锁,饥饿,活锁
 饥饿：线程无法得到资源，优先级低得线程始终得不到高优先级线程释放的资源
-活锁：资源不停的在两个线程间跳动
-
-1.">
+活锁：资源不停的在两个线程间跳动">
   
   <meta name="description" content="1 概念同步和异步
 
@@ -44,11 +42,9 @@
 阻塞：占用资源的线程不释放资源，其他临界区上得线程不能工作
 非阻塞：没有一个线程可以妨碍其他线程执行死锁,饥饿,活锁
 饥饿：线程无法得到资源，优先级低得线程始终得不到高优先级线程释放的资源
-活锁：资源不停的在两个线程间跳动
-
-1.">
+活锁：资源不停的在两个线程间跳动">
 <meta property="og:type" content="article">
-<meta property="og:title" content="java并发编程笔记一(概念和基础知识)">
+<meta property="og:title" content="java并发编程笔记">
 <meta property="og:url" content="http://yoursite.com/2017/03/13/java-concurrency-notes/index.html">
 <meta property="og:site_name" content="SuperTim's Page">
 <meta property="og:description" content="1 概念同步和异步
@@ -66,12 +62,10 @@
 阻塞：占用资源的线程不释放资源，其他临界区上得线程不能工作
 非阻塞：没有一个线程可以妨碍其他线程执行死锁,饥饿,活锁
 饥饿：线程无法得到资源，优先级低得线程始终得不到高优先级线程释放的资源
-活锁：资源不停的在两个线程间跳动
-
-1.">
-<meta property="og:updated_time" content="2017-03-21T09:57:44.000Z">
+活锁：资源不停的在两个线程间跳动">
+<meta property="og:updated_time" content="2017-03-21T10:05:55.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="java并发编程笔记一(概念和基础知识)">
+<meta name="twitter:title" content="java并发编程笔记">
 <meta name="twitter:description" content="1 概念同步和异步
 
 同步：方法结束才能返回
@@ -87,9 +81,7 @@
 阻塞：占用资源的线程不释放资源，其他临界区上得线程不能工作
 非阻塞：没有一个线程可以妨碍其他线程执行死锁,饥饿,活锁
 饥饿：线程无法得到资源，优先级低得线程始终得不到高优先级线程释放的资源
-活锁：资源不停的在两个线程间跳动
-
-1.">
+活锁：资源不停的在两个线程间跳动">
   
     <link rel="alternate" href="/atom.xml" title="SuperTim&#39;s Page" type="application/atom+xml">
   
@@ -139,7 +131,7 @@
     
     
   
-    <h1 class="title">java并发编程笔记一(概念和基础知识)</h1>
+    <h1 class="title">java并发编程笔记</h1>
   
 
   </header>
@@ -163,6 +155,7 @@
 <li>饥饿：线程无法得到资源，优先级低得线程始终得不到高优先级线程释放的资源</li>
 <li>活锁：资源不停的在两个线程间跳动</li>
 </ul>
+<a id="more"></a>
 <h2 id="1-1-并发级别"><a href="#1-1-并发级别" class="headerlink" title="1.1 并发级别"></a>1.1 并发级别</h2><ul>
 <li>阻塞：synchronized或者重入的</li>
 <li>无饥饿：公平锁</li>
@@ -232,6 +225,7 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;</div><div class="line">	<span class="keyword">static</span> A a = <span class="keyword">new</span> A；</div><div class="line">	<span class="keyword">static</span> <span class="keyword">int</span> i = <span class="number">0</span>;</div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">		synchronzied(a) &#123;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="comment">// 错误的加锁：</span></div><div class="line">	<span class="function"><span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">		++i;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>改成</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">increase</span><span class="params">()</span> </span>&#123;</div><div class="line">	++i</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong><em>TODO</em></strong></p>
 <h1 id="3-同步控制"><a href="#3-同步控制" class="headerlink" title="3 同步控制"></a>3 同步控制</h1><h2 id="3-1-重入锁ReentrantLock"><a href="#3-1-重入锁ReentrantLock" class="headerlink" title="3.1 重入锁ReentrantLock"></a>3.1 重入锁ReentrantLock</h2><ul>
 <li>lock/unlock：在一个线程内可以反复进入</li>
 <li>lockInterruptibly中断响应：等锁的时候可以被中断（synchronized不可以）</li>
@@ -244,8 +238,7 @@
 <li>等待队列</li>
 <li>阻塞原语</li>
 </ul>
-<h2 id="3-2-Condition"><a href="#3-2-Condition" class="headerlink" title="3.2 Condition"></a>3.2 Condition</h2><h2 id="3-3-信号量"><a href="#3-3-信号量" class="headerlink" title="3.3 信号量"></a>3.3 信号量</h2><p>TODO</p>
-<h2 id="3-4-ReadWriteLock"><a href="#3-4-ReadWriteLock" class="headerlink" title="3.4 ReadWriteLock"></a>3.4 ReadWriteLock</h2><h2 id="3-5-CountDownLatch"><a href="#3-5-CountDownLatch" class="headerlink" title="3.5 CountDownLatch"></a>3.5 CountDownLatch</h2><h2 id="3-6-CyclicBarrier："><a href="#3-6-CyclicBarrier：" class="headerlink" title="3.6 CyclicBarrier："></a>3.6 CyclicBarrier：</h2><p>countDownLatch 加BarrierAction</p>
+<h2 id="3-2-Condition"><a href="#3-2-Condition" class="headerlink" title="3.2 Condition"></a>3.2 Condition</h2><h2 id="3-3-信号量"><a href="#3-3-信号量" class="headerlink" title="3.3 信号量"></a>3.3 信号量</h2><h2 id="3-4-ReadWriteLock"><a href="#3-4-ReadWriteLock" class="headerlink" title="3.4 ReadWriteLock"></a>3.4 ReadWriteLock</h2><h2 id="3-5-CountDownLatch"><a href="#3-5-CountDownLatch" class="headerlink" title="3.5 CountDownLatch"></a>3.5 CountDownLatch</h2><h2 id="3-6-CyclicBarrier："><a href="#3-6-CyclicBarrier：" class="headerlink" title="3.6 CyclicBarrier："></a>3.6 CyclicBarrier：</h2><p>countDownLatch 加BarrierAction</p>
 <h2 id="3-7-LockSupport"><a href="#3-7-LockSupport" class="headerlink" title="3.7 LockSupport"></a>3.7 LockSupport</h2><p>park/unpark,即使unpark在park之前调用，park也能返回 </p>
 <h1 id="4-线程池"><a href="#4-线程池" class="headerlink" title="4 线程池"></a>4 线程池</h1><h1 id="5-并发容器"><a href="#5-并发容器" class="headerlink" title="5 并发容器"></a>5 并发容器</h1><h1 id="6-锁的优化"><a href="#6-锁的优化" class="headerlink" title="6 锁的优化"></a>6 锁的优化</h1>
     
@@ -263,7 +256,7 @@
 
 <section id="comment">
   <h1 class="title">Comments</h1>
-  <div class="ds-thread" data-thread-key="2017/03/13/java-concurrency-notes/" data-title="java并发编程笔记一(概念和基础知识)" data-url="http://yoursite.com/2017/03/13/java-concurrency-notes/"></div>
+  <div class="ds-thread" data-thread-key="2017/03/13/java-concurrency-notes/" data-title="java并发编程笔记" data-url="http://yoursite.com/2017/03/13/java-concurrency-notes/"></div>
 </section>
 </div>
   </div>
@@ -286,11 +279,11 @@
   <ul class="entry">
     
       <li>
-        <a href="/2017/03/13/java-concurrency-notes/">java并发编程笔记一(概念和基础知识)</a>
+        <a href="/2017/03/13/java-concurrency-notes/">java并发编程笔记</a>
       </li>
     
       <li>
-        <a href="/2017/03/10/kafka_notes/">kafka-notes</a>
+        <a href="/2017/03/10/kafka_notes/">kafka paper 阅读笔记</a>
       </li>
     
   </ul>
