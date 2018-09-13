@@ -3,7 +3,21 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://supertim.github.io/post/test/</loc>
+    <lastmod>2018-09-13T14:02:36+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>http://supertim.github.io/categories/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://supertim.github.io/post/</loc>
+    <lastmod>2018-09-13T14:02:36+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -16,6 +30,7 @@
   
   <url>
     <loc>http://supertim.github.io/</loc>
+    <lastmod>2018-09-13T14:02:36+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
