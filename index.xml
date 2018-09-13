@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>supertim&#39;s homepage</title>
+    <title>supertim&#39;s page</title>
     <link>http://supertim.github.io/</link>
-    <description>Recent content on supertim&#39;s homepage</description>
+    <description>Recent content on supertim&#39;s page</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
+    <language>en</language>
     
         <atom:link href="http://supertim.github.io/index.xml" rel="self" type="application/rss+xml" />
     

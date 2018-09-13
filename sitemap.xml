@@ -4,16 +4,19 @@
   
   <url>
     <loc>http://supertim.github.io/categories/</loc>
+    <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://supertim.github.io/tags/</loc>
+    <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://supertim.github.io/</loc>
+    <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
